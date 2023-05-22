@@ -20,11 +20,17 @@ gallery.innerHTML = galleryItemsMarkup;
 let currentModal = null;
 
 const head = document.querySelector("head");
-const simpleLightboxStyles = document.createElement("link");
-simpleLightboxStyles.rel = "stylesheet";
-simpleLightboxStyles.href =
-  "https://cdn.jsdelivr.net/npm/basiclightbox@5.0.4/dist/basicLightbox.min.css";
-head.appendChild(simpleLightboxStyles);
+const basicLightboxStyles = document.createElement("link");
+basicLightboxStyles.rel = "stylesheet";
+basicLightboxStyles.href =
+  "https://cdn.jsdelivr.net/npm/basiclightbox@5.0.0/dist/basicLightbox.min.css";
+head.append(basicLightboxStyles);
+
+const body = document.querySelector("body");
+const basicLightboxScript = document.createElement("script");
+basicLightboxScript.src =
+  "https://cdn.jsdelivr.net/npm/basiclightbox@5.0.0/dist/basicLightbox.min.js";
+body.append(basicLightboxScript);
 
 gallery.addEventListener("click", (evt) => {
   evt.preventDefault();
@@ -39,8 +45,9 @@ gallery.addEventListener("click", (evt) => {
 });
 
 const handleKeyDown = (evt) => {
-  if (currentModal) {
+  if (evt.key === "Escape") {
     currentModal.close();
     currentModal = null;
+    document.removeEventListener("keydown", handleKeyDown);
   }
 };

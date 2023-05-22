@@ -24,6 +24,7 @@ simpleLightboxStyles.href =
   "https://cdnjs.cloudflare.com/ajax/libs/simplelightbox/2.14.0/simple-lightbox.min.css";
 head.append(simpleLightboxStyles);
 
+const body = document.querySelector("body");
 const simpleLightboxScript = document.createElement("script");
 simpleLightboxScript.src =
   "https://cdnjs.cloudflare.com/ajax/libs/simplelightbox/2.14.0/simple-lightbox.min.js";
@@ -34,4 +35,4 @@ simpleLightboxScript.onload = () => {
     captionDelay: 250,
   });
 };
-head.append(simpleLightboxScript);
+body.append(simpleLightboxScript);
